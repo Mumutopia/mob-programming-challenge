@@ -1,6 +1,7 @@
 const { application } = require("express");
 const express =require("express");
 const hbs = require("hbs");
+const router = require("./routers/main");
 const app = express();
 
 require("dotenv").config();
@@ -10,6 +11,10 @@ app.set("view engine", hbs);
 app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/public"));
 hbs.registerPartials(__dirname + "/views/partials");
+
+const mainRouter = require("./routers/main.js");
+app.use(mainRouter);
+
 
 console.log(process.env.PORT);
 
@@ -41,6 +46,4 @@ const users = [
 
 ]
 
-const images = [
-   "/img/alexander-sinn-KgLtFCgfC28-unsplash.jpg", "/img/clark-tibbs-oqStl2L5oxI-unsplash.jpg", "/img/pankaj-patel-u2Ru4QBXA5Q-unsplash.jpg" 
-]
+
